@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relaxo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom CSS for smooth transitions and dark overlay */
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .carousel-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); 
+      }
+      .carousel-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+        padding: 0 20px;
+        z-index: 1; 
+      }
+      .navbar-nav {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .navbar-nav.active {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-gray-800"><span class="text-blue-500">Snug</span>spot</a>
+        <button class="lg:hidden text-gray-800 focus:outline-none" onclick="toggleNav()">
+          <i class="bi bi-list text-2xl"></i>
+        </button>
+        <div class="navbar-nav lg:flex lg:space-x-6">
+          <a href="#" class="text-gray-800 hover:text-blue-500">Packages</a>
+          <a href="#FAQ" class="text-gray-800 hover:text-blue-500">FAQ</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carousel" class="relative overflow-hidden">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item">
+          <img
+            src="img/1.jpg"
+            class="w-full h-[500px] object-cover"
+            alt="Slide 1"
+          />
+          <div class="carousel-content">
+            <h1 class="text-5xl font-bold mb-4 text-white">Your Cozy Corner</h1>
+            <p class="text-lg mb-6 text-white">Enjoy the ultimate comfort experience with SnugSpot's carefully crafted chairs.</p>
+            <div class="space-x-4">
+              <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded">Shop Now</a>
+              <a href="#" class="bg-gray-800 text-white px-6 py-2 rounded">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img
+            src="img/2.jpg"
+            class="w-full h-[500px] object-cover"
+            alt="Slide 2"
+          />
+          <div class="carousel-content">
+            <h2 class="text-5xl font-bold mb-4 text-white">Sink into Comfort</h2>
+            <p class="text-lg mb-6 text-white">Say goodbye to stiff backs and hello to blissful relaxation.</p>
+            <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded">Proceed</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img
+            src="img/3.jpg"
+            class="w-full h-[500px] object-cover"
+            alt="Slide 3"
+          />
+          <div class="carousel-content">
+            <h5 class="text-5xl font-bold mb-4 text-white">Relax, Recharge, Repeat</h5>
+            <p class="text-lg mb-6 text-white">Our chairs are designed to help you unwind, recharge, and repeat.</p>
+            <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+      <button
+        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        onclick="prevSlide()"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button
+        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        onclick="nextSlide()"
+      >
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Icons Section -->
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-6">
+          <i class="bi bi-house-door text-blue-500 text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Comfortability</h3>
+          <p class="text-gray-600">Experience unmatched comfort with our designs.</p>
+        </div>
+        <div class="p-6">
+          <i class="bi bi-lamp text-blue-500 text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Cozy Feelings</h3>
+          <p class="text-gray-600">Feel the warmth and coziness in every corner.</p>
+        </div>
+        <div class="p-6">
+          <i class="bi bi-emoji-smile text-blue-500 text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Satisfaction</h3>
+          <p class="text-gray-600">Guaranteed satisfaction with every product.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="container mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold text-center text-blue-500 mb-8">About Us</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+          <i class="bi bi-lightbulb text-blue-500 text-4xl mb-4"></i>
+          <h5 class="text-xl font-bold mb-2">Find Your Snug</h5>
+          <p class="text-gray-600">Discover your happy place at SnugSpot. Our cozy space is designed to help you unwind and relax.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+          <i class="bi bi-house-door text-blue-500 text-4xl mb-4"></i>
+          <h5 class="text-xl font-bold mb-2">Your Cozy Retreat</h5>
+          <p class="text-gray-600">SnugSpot is your haven for relaxation. Unwind in our comfortable designs.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+          <i class="bi bi-house text-blue-500 text-4xl mb-4"></i>
+          <h5 class="text-xl font-bold mb-2">Experience Comfort</h5>
+          <p class="text-gray-600">Escape to SnugSpot, where warmth and coziness meet tranquility.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container mx-auto px-4 py-12" id="FAQ">
+      <h1 class="text-4xl font-bold text-center text-blue-500 mb-8">Frequently Asked Questions</h1>
+      <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-2">What is Snugspot?</h2>
+          <p class="text-gray-600">SnugSpot is a cozy and relaxing space designed to help you unwind and recharge.</p>
+        </div>
+        <!-- FAQ Item 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-2">Is Snugspot open for everyone?</h2>
+          <p class="text-gray-600">Yes, SnugSpot is open to anyone looking for a relaxing and calming space.</p>
+        </div>
+        <!-- FAQ Item 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-2">What makes SnugSpot's beds so special?</h2>
+          <p class="text-gray-600">Our beds are designed with comfort and support in mind, featuring high-quality materials.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form and Map -->
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="text-4xl font-bold text-center text-blue-500 mb-8">Contact Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Contact Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <form class="space-y-4">
+            <div>
+              <label for="username" class="block text-gray-700">Username:</label>
+              <input
+                type="text"
+                id="username"
+                class="w-full px-4 py-2 border rounded-lg"
+                placeholder="Enter username"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700">Email:</label>
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-2 border rounded-lg"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700">Message:</label>
+              <textarea
+                id="message"
+                rows="3"
+                class="w-full px-4 py-2 border rounded-lg"
+                placeholder="Your message"
+              ></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg w-full">
+              Send Message
+            </button>
+          </form>
+        </div>
+        <!-- Embedded Map -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d144.95373531531664!3d-37.816279742021665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d2d2f2f1c3b4!2sSnugSpot!5e0!3m2!1sen!2sus!4v1622549400000!5m2!1sen!2sus"
+            class="w-full h-full rounded-lg"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-gray-800 text-white text-center py-6">
+      <p>&copy; 2025 Anyebe Ruth. All rights reserved.</p>
+    </div>
+
+    <!-- Carousel Script -->
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-item");
+      const carouselInner = document.querySelector(".carousel-inner");
+
+      function showSlide(index) {
+        const offset = -index * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      // Auto-play (every 5 seconds)
+      setInterval(nextSlide, 5000);
+
+      // Hamburger Menu Toggle
+      function toggleNav() {
+        const navbarNav = document.querySelector(".navbar-nav");
+        navbarNav.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
